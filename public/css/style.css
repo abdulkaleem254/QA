@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: Open Sans, Calibri, Helvetica, sans-serif !important;
+    background-color: #007680;
+}
+
+
+/* Style 9
+   ----------------------------- */
+.nine h1 {
+    text-align: left;
+    font-size: 50px;
+    text-transform: uppercase;
+    /* color: #222; */
+    color: #f0f0f0;
+    letter-spacing: 1px;
+    font-family: "Playfair Display", serif;
+    /* font-family: Open Sans, Calibri, Helvetica, sans-serif; */
+    font-weight: 400;
+}
+
+.nine span {
+    margin-top: 5px;
+    font-size: 13px;
+    /* color: #444; */
+    color: #ededed;
+    word-spacing: 1px;
+    font-weight: normal;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+
+    /* display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-rows: 27px 0;
+    grid-gap: 20px;
+    align-items: center; */
+}
+
+.nine h1 span:after,
+.nine h1 span:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    height: 5px;
+    background-color: #f8f8f8;
+}
+
+.container {
+    width: 85%;
+    padding: 3% 0% 10% 0%;
+}
+
+#output-box {
+    width: 100%;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 20%;
+    padding: 10px !important;
+    background-color: #00ABAB;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: block !important;
+    margin: 0 auto;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #008B8B;
+}
+.Togglepreview,.Togglelanguage{
+    position: absolute;
+    color: white;
+    font-size: 18px;
+}
+.Togglepreview{
+    
+    right: 25%;
+}
+.Togglelanguage{
+    right: 2%;
+}
+
+.resultContainer {
+    width: 90%;
+    margin: 10px auto;
+    box-shadow: 0px 1px 10px 2px #606060;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.resultContainer>.choose {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.resultContainer>.choose>div {
+    width: 30%;
+    background-color: #dedede;
+    border: 1px solid black;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.resultContainer>.choose>div.active {
+    background-color: #00ABAB;
+    color: white;
+    transition: 0.4s;
+}
+
+.resultContainer>.choose>div>p {
+    margin: 0;
+}
+
+.resultContainer>div {
+    width: 100%;
+    text-align: center;
+}
+
+#anchorLinks table {
+    text-align: center;
+}
+
+#anchorLinks table tr td {
+    padding: 10px;
+}
+
+#anchorLinks table tr {
+    border-bottom: 1px solid#f3f3f3;
+}
+
+.errors-list {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+td:first-child {
+    width: 60%;
+
+}
+
+td:nth-child(2) {
+    width: 10%;
+}
+
+th {
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+td {
+    width: 20%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.errors-list>p {
+    font-weight: bold;
+}
+
+.result {
+    margin-bottom: 15px;
+}
+
+.filled-fields>p {
+    font-weight: bold;
+}
+
+.row-value {
+    display: flex;
+    width: 100%;
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.row-value>p {
+    border-right: 1px solid black;
+    padding: 10px;
+    margin-bottom: 0;
+    word-wrap: break-word;
+}
+
+.row-value>a {
+    width: 100%;
+    padding: 10px;
+    text-decoration: none;
+    text-align: left;
+    color: #00ABAB;
+}
+
+.row-value>a:hover {
+    text-decoration: underline;
+}
+
+select {
+    width: 70%;
+    margin: 0 auto;
+    height: 40px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.property-tab-result .row-value>p:first-child {
+    width: 20%;
+    text-align: center;
+}
+
+.property-tab-result .row-value>p:nth-child(2) {
+    width: 60%;
+}
+
+.property-tab-result .row-value>p:last-child {
+    width: 20%;
+}
+
+.page-result .row-value>p {
+    width: 50%;
+}
+
+i {
+    font-size: 20px;
+    padding: 5px;
+}
+
+i.fa-circle-exclamation {
+    color: #DA291C;
+}
+
+i.fa-check-circle {
+    color: #86BC25;
+}
+
+i.fa-triangle-exclamation {
+    color: #FFCD00;
+}
+
+.row-value:hover {
+    background-color: #f3f3f3;
+    transition: 0.2s;
+}
+
+.overlay {
+    background-color: rgba(249, 249, 249, 0.717);
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: 0.3s ease;
+    display: none;
+}
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.loader {
+    --r1: 154%;
+    --r2: 68.5%;
+    width: 60px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+        radial-gradient(var(--r1) var(--r2) at top, #0000 79.5%, #007680 80%),
+        radial-gradient(var(--r1) var(--r2) at bottom, #007680 79.5%, #0000 80%),
+        radial-gradient(var(--r1) var(--r2) at top, #0000 79.5%, #007680 80%),
+        #ccc;
+    background-size: 50.5% 220%;
+    background-position: -100% 0%, 0% 0%, 100% 0%;
+    background-repeat: no-repeat;
+    animation: l9 5s infinite linear;
+    margin-left: 10%;
+}
+
+.suggestions-box {
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: white;
+    position: absolute;
+    z-index: 1000;
+    /*width: calc(100% - 22px); /* Adjust based on your input field width */
+    width: auto;
+    top: 50px;
+}
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}
+
+
+@keyframes l9 {
+    33% {
+        background-position: 0% 33%, 100% 33%, 200% 33%
+    }
+
+    66% {
+        background-position: -100% 66%, 0% 66%, 100% 66%
+    }
+
+    100% {
+        background-position: 0% 100%, 100% 100%, 200% 100%
+    }
+}
+
+.loader-text {
+    width: fit-content;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 20px;
+    clip-path: inset(0 3ch 0 0);
+    animation: l4 1s steps(4) infinite;
+}
+
+.loader-text:before {
+    content: "Loading..."
+}
+
+@keyframes l4 {
+    to {
+        clip-path: inset(0 -1ch 0 0)
+    }
+}

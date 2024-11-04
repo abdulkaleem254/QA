@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="./logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Application</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/36c06ed161.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+
+</head>
+<body>
+<div class="container-full">
+    <div class="container">
+        <div class="nine" style="width: 20%; float: left;">
+            <h1>QA Tool</h1>
+            <span>Simple. Quick. Efficient.</span>
+        </div>
+        <div style="width: 70%; float: left;">
+            <form onsubmit="return false;">
+                <input type="text" id="inputField"
+                    placeholder="Enter URL to check . . ."
+                    value="https://www.deloitte.com/global/en/services/financial-advisory/perspectives/deloittes-global-infrastructure-magazine.html">
+                <div id="suggestions" class="suggestions-box"></div>
+                <button onclick="checkProperty()" type="submit"
+                    class="btn btn-primary"
+                    style="float: left;">Check</button>
+                <div style="position: relative;padding: 10px;">
+                    <div class="Togglepreview form-check form-switch">
+                        <input class="form-check-input" type="checkbox"
+                            id="previewToggle"
+                            onchange="togglePreview()">
+                        <label class="form-check-label"
+                            for="previewToggle">Preview</label>
+                    </div>
+                    <div class="Togglelanguage form-check form-switch"
+                        id="languageToggleContainer"
+                        style="display: none;">
+                        <input class="form-check-input" type="checkbox"
+                            id="languageToggle"
+                            onchange="toggleLanguage()">
+                        <label class="form-check-label"
+                            for="languageToggle">Language/Global</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="bg-light text-center py-3" id="output-box" style="display: none;">
+        <div class="top-nav" style="display: flex;justify-content: space-around;">
+            <p><a href="" id="author-url" target="_blank" type="button" class="btn btn-outline-primary">Open Properties</a></p>
+            <p><a href="" id="edit-url" target="_blank" type="button" class="btn btn-outline-primary">Edit Page</a></p>
+            <p onclick="screenshot()" class="btn btn-warning">Take Screenshot</p>
+        </div>
+        <div class="errors-list">
+            <div class="d-flex">
+                <p class="fw-bold">Total Errors : <span id="total-errors">{}</span> </p>
+            </div>
+            <div><h5 class="fw-bold" id="templateName">Page Template</h5></div>
+            <div><p class="fw-bold">QA Status : <span id="status">{}</span></p></div> 
+        </div>
+        <div class="resultContainer">
+            <div class="choose">
+                <div class="active" onclick="properties()" id="property-tab">
+                    <p class="fw-bold">Properties</p>
+                </div>
+                <div id="page-tab" onclick="page()">
+                    <p class="fw-bold">Page</p>
+                </div>
+                <div id="link-tab" onclick="pageLink()">
+                    <p class="fw-bold">Page links</p>
+                </div>
+            </div>
+
+            <!-- Properties HTML -->
+            <div class="filled-fields property-tab-result" id="results">
+                <div class="result">
+                    <div class="row-value">
+                        <p class="fw-bold">Property</p>
+                        <p class="fw-bold">Property value</p>
+                        <p class="fw-bold">Status</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page HTML -->
+            <div class="filled-fields page-result" style="display: none;" id="pageResult">
+                <div class="result">
+                    <div class="row-value">
+                        <p class="fw-bold">Components</p>
+                        <p class="fw-bold">Status</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Dropdown links HTML -->
+            <div class="filled-fields page-result" style="display: none;" id="pageLinks">
+                <div class="result">
+                    <div class="row-value">
+                        <select name="link-category" id="category" onchange="linkSelection()">
+                            <option value="al">All Links</option>
+                            <option value="gb">Deloitte Global</option>
+                            <option value="mf">Other Member firms</option>
+                            <option value="el">External Links</option>
+                            <option value="pdf">Pdf Links</option>
+                            <option value="sl">Profile Links</option>
+                        </select>
+                        <button id="btn-download">Download Excel</button>
+                    </div>
+                    <div id="anchorLinks">
+                        <table id="tableLinks">
+                            <thead>
+                                <tr>
+                                    <th>Link <i class="fa fa-sort" onclick="sortTable('link')"></i></th>
+                                    <th>Status <i class="fa fa-sort" onclick="sortTable('status')"></i></th>
+                                    <th>PDF Properties <i class="fa fa-sort" onclick="sortTable('pdfProperties')"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Rows will be dynamically inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- loader -->
+    <div class="overlay" id="loading" style="display:none;">
+        <div class="spinner-container">
+            <div>
+                <div class="loader"></div>
+                <div class="loader-text"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./script.js"></script>
+
+</body>
+</html>
