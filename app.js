@@ -239,7 +239,16 @@ async function checkLinks(links, browser) {
     return checkedLinks;
 }
 
-appExpress.listen(8080, () => {
-    console.log("Express server is running on port 8080");
-    console.log("Please open http://localhost:8080/");
+// appExpress.listen(8080, () => {
+//     console.log("Express server is running on port 8080");
+//     console.log("Please open http://localhost:8080/");
+// });
+// Define your routes
+appExpress.get('/', (req, res) => {
+    res.send('Hello from Express on Vercel!');
 });
+
+// Export the app as a serverless function
+module.exports = (req, res) => {
+    return appExpress(req, res);
+};
